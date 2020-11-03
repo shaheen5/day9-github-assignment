@@ -6,8 +6,7 @@ echo "Welcome to Employee Wage Computation!!!"
 EMP_PART_TIME=1
 EMP_FULL_TIME=2
 EMP_RATE_PER_HOUR=20
-
-#variables
+TOTAL_WORKING_DAYS=20
 
 case $(( RANDOM%3)) in
 			$EMP_PART_TIME) working_hours=4;;
