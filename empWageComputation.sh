@@ -15,3 +15,5 @@ case $(( RANDOM%3)) in
 esac
 daily_wage=$(( working_hours*EMP_RATE_PER_HOUR ))
 echo "Daily Employee Wage="$daily_wage
+total_wage=$(( TOTAL_WORKING_DAYS*daily_wage ))
+echo "Monthly Wages="$total_wage
