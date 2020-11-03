@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 
 echo "Welcome to Employee Wage Computation!!!"
 
@@ -6,14 +6,24 @@ echo "Welcome to Employee Wage Computation!!!"
 EMP_PART_TIME=1
 EMP_FULL_TIME=2
 EMP_RATE_PER_HOUR=20
-TOTAL_WORKING_DAYS=20
+MAX_WORKING_DAYS=20
 
-case $(( RANDOM%3)) in
+#variables
+total_working_hours=0
+total_wage=0
+total_working_days=0
+
+while [ $total_working_days -lt $MAX_WORKING_DAYS ]
+do
+	((total_working_days++));
+	case $(( RANDOM%3 )) in
 			$EMP_PART_TIME) working_hours=4;;
 			$EMP_FULL_TIME) working_hours=8;;
 				     *) working_hours=0;;
 esac
-daily_wage=$(( working_hours*EMP_RATE_PER_HOUR ))
-echo "Daily Employee Wage="$daily_wage
-total_wage=$(( TOTAL_WORKING_DAYS*daily_wage ))
-echo "Monthly Wages="$total_wage
+
+daily_wage=$(( working_hours * EMP_RATE_PER_HOUR ))
+total_working_hours=$(( total_working_hours + working_hours ))
+total_wage=$(( total_wage + daily_wage ))
+done
+echo "Total Wage="$total_wage
